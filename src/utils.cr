@@ -10,18 +10,15 @@
         @url="X"
     end
 
-    def request
+    def request 
       callapi = Crest.get(@url, tls: OpenSSL::SSL::Context::Client.insecure, handle_errors: false) do |resp|
       case resp
       when .success?
-        #puts(resp)
-        #puts resp.body_io.gets_to_end
-        @response= resp.body_io.gets_to_end
-        
+        @response = resp.body_io.gets_to_end
       when .client_error?
-        puts "Client error"
+        @response = "Client Error"
       when .server_error?
-        puts "Server error"
+        @response = "Server Error"
       end
     end
 end

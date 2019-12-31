@@ -3,11 +3,10 @@ require "crest"
 require "./utils"
 require "./interface"
 
-module SpaceCRYST::X
+module SpaceCRYSTX::X
   VERSION = "0.1.0"
 
   i = SpaceCRYST.new
   i.crew
   puts(i.response)
-
 end

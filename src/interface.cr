@@ -1,14 +1,15 @@
 require "./urls.cr"
 
+# A SpaceCRYST is an object that contains methods to access
+# information about **Space/X**.
+# This class does **NOT** have any affiliation with Space/X.
 class SpaceCRYST
+  property response
+  getter response : String
+  property main_url : String
+  property i : SyncHttp
 
-property response
-getter response : String
-property main_url : String
-property i : SyncHttp
-
-def initialize
-
+  def initialize
     # Get main URL
     urls = URLS.new
     @main_url = urls.main_url
@@ -16,65 +17,63 @@ def initialize
     # Initialise response
     @response = "X"
     @i = SyncHttp.new
-end
+  end
 
-# Capsules
-def capsules : String
+  # Capsules
+  def capsules : String
     i.url = @main_url + "capsules"
     i.request
     @response = i.response
-end
+  end
 
-def upcomingCapsules : String
+  def upcomingCapsules : String
     i.url = @main_url + "capsules/upcoming"
     i.request
     @response = i.response
-end
+  end
 
-def pastCapsules : String
+  def pastCapsules : String
     i.url = @main_url + "capsules/past"
     i.request
     @response = i.response
-end
+  end
 
-# Company
-def info : String
+  # Company
+  def info : String
     i.url = @main_url + "info"
     i.request
     @response = i.response
-end
+  end
 
-def company : String
-    i.url = @main_url 
+  def company : String
+    i.url = @main_url
     i.request
     @response = i.response
-end
+  end
 
-# Cores
-def cores : String
+  # Cores
+  def cores : String
     i.url = @main_url + "cores"
     i.request
     @response = i.response
-end
+  end
 
-def upcomingCores : String
+  def upcomingCores : String
     i.url = @main_url + "cores/upcoming"
     i.request
     @response = i.response
-end
+  end
 
-def pastCores : String
+  def pastCores : String
     i.url = @main_url + "cores/past"
     i.request
     @response = i.response
-end
+  end
 
-# Crew
-def crew : String
+  # Crew
+  def crew : String
     i.url = @main_url + "crew"
     i.request
     @response = i.response
+  end
 end
-
-end 
-

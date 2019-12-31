@@ -36,4 +36,19 @@ describe "Testing SpaceCRYST::X " do
       end
     end
   end
+
+  describe "Testing Company Information" do
+    i = SpaceCRYST.new
+    i.info 
+    info = Hash(String, JSON::Any).from_json(i.response)
+    it "Company COO is OK" do
+      info["coo"].as_s.should eq("Gwynne Shotwell")
+    end
+    it "Company CTO is OK" do
+      info["cto"].as_s.should eq("Elon Musk")
+    end
+    it "Company CTO Propulsion is OK" do
+      info["cto_propulsion"].as_s.should eq("Tom Mueller")
+    end
+  end
 end

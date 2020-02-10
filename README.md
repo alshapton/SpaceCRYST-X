@@ -25,11 +25,10 @@
 require "SpaceCRYST-X"
 ```
 
-TODO: Write usage instructions here
+
 
 ## Development
 
-TODO: Write development instructions here
 
 ### Credits
 Jake Meyer's [r-spacex/SpaceX-API](https://github.com/r-spacex/SpaceX-API)

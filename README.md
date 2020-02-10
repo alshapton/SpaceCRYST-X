@@ -1,11 +1,11 @@
 # SpaceCRYST-X - SpaceX API wrapper in Crystal 
 <div align="center">
 <p align="center">
-<img src="https://github.com/alshapton/SpaceNIM-X/blob/master/nimrocket.png" width="30%" height="30%">
+<img src="https://github.com/alshapton/SpaceCRYST-X/blob/master/crystrocket.png" width="30%" height="30%">
 
 ## Simple and Easy API Wrapper for [r-spacex/SpaceX-API](https://github.com/r-spacex/SpaceX-API)
-
-TODO: Write a description here
+</p>
+</div>
 
 ## Installation
 

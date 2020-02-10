@@ -3,11 +3,19 @@ require "./urls.cr"
 # A SpaceCRYST is an object that contains methods to access
 # information about **Space/X**.
 # This class does **NOT** have any affiliation with Space/X.
+
 class SpaceCRYST
   property response
   getter response : String
-  property main_url : String
-  property i : SyncHttp
+  
+  property one : String
+  getter one : String
+
+  property params
+  getter params : String
+
+  private property main_url : String
+  private property i : SyncHttp
 
   def initialize
     # Get main URL
@@ -16,12 +24,21 @@ class SpaceCRYST
 
     # Initialise response
     @response = "X"
+    @one = "X"
+    @params = "[]"
     @i = SyncHttp.new
   end
 
   # Capsules
   def capsules : String
-    i.url = @main_url + "capsules"
+    JSONtoHTTP.new
+    i.url = @main_url + "capsules" 
+    i.request
+    @response = i.response
+  end
+  
+  def oneCapsule : String
+    i.url = @main_url + "capsules/" + @one
     i.request
     @response = i.response
   end

@@ -1,3 +1,11 @@
+require "http/params"
+require "json"
+
+struct A
+  include JSON::Serializable
+  include JSON::Serializable::Unmapped
+end
+
 class SyncHttp
   property response
   property url
@@ -21,5 +29,36 @@ class SyncHttp
         @response = "Server Error"
       end
     end
+  end
+end
+
+class JSONtoHTTP
+  property jsonParams : String
+  property httpParams : String
+  def initialize
+    @jsonParams="[]"
+    @httpParams = ""
+    enteredParams = @jsonParams
+    enteredParams="{\"status\":\"active\",\"fred\":\"flintstone\",\"name\":12}"
+    haash = JSON.parse(enteredParams).as_h
+
+    
+
+    params = HTTP::Params.build do |form|
+      haash.each do |ky| 
+        done=false
+      begin
+        tmp=typeof(ky[1].to_s)
+        done=true
+        form.add ky[0], (ky[1].to_s)
+      rescue ex : TypeCastError
+      end
+
+    end
+    end
+    puts(params)
+    #@httpParams=HTTP::Params.encode(Hash(String, JSON::Any).from_json(enteredParams))
+    #@httpParams=HTTP::Params.encode(Hash(String, JSON::Any),enteredParams)
+    #puts(params)
   end
 end
